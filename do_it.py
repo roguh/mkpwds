@@ -86,12 +86,15 @@ def analyze(candidate_words: Set[str], word_count: int=4, name: Optional[str]=No
 
 def analyze_many(words: Set[str], filters: Collection[Filter]=(), name: str='?', word_counts: Collection[int]=(2, 3, 4, 5, 6, 10, 15)) -> None:
     filters_str = '-'.join([f.__name__ for f in filters])
-    for word_count in word_counts:
+    for extra_symbols in [valid_wpa_symbols, valid_wpa_symbols_no_alpha, valid_wpa_symbols_no_digits, alpha_and_digits, digits]:
+        candidates = union_and_filter([words, extra_symbols], filters)
         print()
-        for extra_symbols in [valid_wpa_symbols, valid_wpa_symbols_no_alpha, valid_wpa_symbols_no_digits, alpha_and_digits, digits]:
+        for word_count in word_counts:
             analyze(
-                union_and_filter([words, extra_symbols], filters),
-                word_count=word_count, name=f'{word_count}__{len(extra_symbols)}_{name}_{filters_str}')
+                candidates,
+                word_count=word_count,
+                name=f'{word_count}__{len(extra_symbols)}syms_{name}_{filters_str}'
+            )
 
 def analyze_wordlist(fnames: Union[str, Collection[str]], filters: Collection[Filter]=()):
     if isinstance(fnames, (str, bytes)):
