@@ -1,0 +1,9 @@
+[submodule "english-words"]
+	path = english-words
+	url = https://github.com/dwyl/english-words
+[submodule "google-10000-english"]
+	path = google-10000-english
+	url = https://github.com/first20hours/google-10000-english.git
+[submodule "urban-dictionary-word-list"]
+	path = urban-dictionary-word-list
+	url = https://github.com/mattbierner/urban-dictionary-word-list.git
