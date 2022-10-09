@@ -112,6 +112,9 @@ def analyze_wordlist(fnames: Union[str, Collection[str]], filters: Collection[Fi
             print("error opening file", fname)
     fname_str = '-'.join(basename(fname) for fname in valid_fnames)
 
+    for common_ending in ['.data', '.json', '.txt']:
+        fname_str = fname_str.replace(common_ending, '')
+
     if len(words) == 0:
         return
     analyze_many(words, filters, fname_str)
