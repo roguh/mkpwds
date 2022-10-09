@@ -116,6 +116,7 @@ def analyze_wordlist(fnames: Union[str, Collection[str]], filters: Collection[Fi
 
 def main():
     analyze_many(set(), name='all', word_counts=[2, 5, 8, 12, 20, 64])
+    analyze_wordlist('google-10000-english-usa-no-swears-short.txt')
     analyze_wordlist('google-10000-english/google-10000-english.txt')
     analyze_wordlist('google-10000-english/google-10000-english.txt')
     analyze_wordlist('google-10000-english/google-10000-english.txt', [max_length_4])
